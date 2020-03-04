@@ -13,12 +13,16 @@ const ProductContainer = () => {
 
   const dispatch = useDispatch()//국룰
 
-  React.useEffect(()=>{ //props가 변화 할 때만 사용.
+  React.useEffect(()=>{ //최초 한번 사용.
     dispatch(productModule.getProductAction())
   },[]);
 
   return (
-    <ProductList result={result} />
+    <ProductList
+      result={result}
+      pushBasketAction={(product)=>dispatch(productModule.pushBasketAction(product))}
+      popBasketAction={(product)=>dispatch(productModule.popBasketAction(product))}
+      />
   );
 };
 
