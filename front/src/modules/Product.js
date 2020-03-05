@@ -15,18 +15,18 @@ const initialState = {
 }
 
 export default handleActions({
-  [GET_PRODUCT]: (state=initialState, action) => {
+  [GET_PRODUCT]: (state, action) => {
     return {
       ...state
     }
   },
-  [PUSH_BASKET]: (state=initialState, {payload:product})=>{
+  [PUSH_BASKET]: (state, {payload:product})=>{
     return {
       ...state,
       baskets : state.baskets.concat(product)
     }
   },
-  [POP_BASKET]: (state=initialState, {payload:id})=>{
+  [POP_BASKET]: (state, {payload:id})=>{
     return {
       ...state,
       baskets : state.baskets.filter(ele=>{
@@ -36,4 +36,14 @@ export default handleActions({
   },
 },initialState)
 
+// export const pushBasketAction2 = () => dispatch => {
+  
+//   dispatch(pushBasketAction());
+
+// }
+// export const popBasketAction2 = () => dispatch => {
+  
+//   dispatch(popBasketAction());
+
+// }
 

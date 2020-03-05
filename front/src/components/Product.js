@@ -1,14 +1,30 @@
 import React from 'react';
 
-const Product = ({item,popBasketAction,pushBasketAction}) => {
-
+const Product = ({item,baskets,popBasketAction,pushBasketAction,key}) => {
+  const [bd,setBd] = React.useState('담기')
+  const [basket, setBasket] = React.useState(baskets)
+  
+  React.useEffect(()=>{
+    if(Array.from(basket).some((ele,idx)=>ele.id === item.id)) setBd('빼기')
+    else setBd('담기')
+  },[])
+  const basketAction = React.useCallback(()=>{
+    if(bd==='담기'){
+      pushBasketAction({product:item})
+      setBd('빼기')
+    }
+    else{
+      popBasketAction({id:item.id})
+      setBd('담기')
+    }
+  })
   return (
     <div>
       <div>{item.title}</div>
       <img src={item.coverImage} height='100px' width='100px' ></img>
       <span>{item.price}원</span>
-      <button onClick={()=>pushBasketAction({product:item})}>담기</button>
-      <button onClick={()=>popBasketAction({id:item.id})}>빼기</button>
+      <button onClick={()=>basketAction()}>{bd}</button>
+      
     </div>
   );
 };

@@ -5,7 +5,7 @@ import * as productModule from '../modules/Product'
 
 const ProductContainer = () => {
 
-  const {result} = useSelector(state=>{ //상태 꺼네오기
+  const {result,baskets} = useSelector(state=>{ //상태 꺼네오기
     return {
       ...state.productModule
     }
@@ -20,6 +20,7 @@ const ProductContainer = () => {
   return (
     <ProductList
       result={result}
+      baskets={baskets}
       pushBasketAction={(product)=>dispatch(productModule.pushBasketAction(product))}
       popBasketAction={(product)=>dispatch(productModule.popBasketAction(product))}
       />

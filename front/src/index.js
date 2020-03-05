@@ -9,16 +9,18 @@ import { BrowserRouter } from 'react-router-dom'
 import { combineReducers } from 'redux'
 
 //스토어 생성함수, 미들웨어 처리 함수
-import { createStore } from 'redux'
+import { createStore,applyMiddleware } from 'redux'
 //전체 App을 리덕스에 구독시키기 위한 프로바이더
 import { Provider } from 'react-redux'
 //크롬개발자도구에 데브툴 연동(선택사항)
 import { composeWithDevTools } from 'redux-devtools-extension'
+import ReduxThunk from 'redux-thunk'
+
 //리듀서 꺼네기
 import rootReducer from './modules'
 
 //스토어를 만들겠다 리듀서를 써서 composeWithDevTools()은 선택
-const store = createStore(rootReducer,composeWithDevTools())
+const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(ReduxThunk)))
 
 
 ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root'));
