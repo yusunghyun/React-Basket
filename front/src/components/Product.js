@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Product = ({item,baskets,popBasketAction,pushBasketAction,key}) => {
+const Product = ({item,baskets,popBasketAction,pushBasketAction}) => {
   const [bd,setBd] = React.useState('담기')
   const [basket, setBasket] = React.useState(baskets)
   
   React.useEffect(()=>{
-    if(Array.from(basket).some((ele,idx)=>ele.id === item.id)) setBd('빼기')
+    if(Array.from(basket).some((ele,idx)=>ele.product.id === item.id)) setBd('빼기')
     else setBd('담기')
-  },[])
+  },[basket])
   const basketAction = React.useCallback(()=>{
     if(bd==='담기'){
       pushBasketAction({product:item})

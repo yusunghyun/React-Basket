@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavLink,Switch,Route} from 'react-router-dom'
-import Home from '../src/components/Home'
+import Home from './components/Home'
+import CartContainer from './containers/CartContainer';
+
 const App = () => {
 
   // const myStyle = {
@@ -12,8 +14,11 @@ const App = () => {
   return (
     <div>
       <h1>클래스101</h1>
-      
-      <Route path='/products' component={Home}/>
+      <Switch>
+        <Route path='/cart' component={CartContainer}/>
+        <Route path='/products' component={Home}/>
+      </Switch>
+
       
     </div>
   );
