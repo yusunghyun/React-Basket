@@ -1,17 +1,21 @@
 import { handleActions, createAction } from 'redux-actions'
 import {productItems} from '../data/productItem'
+import {coupons} from '../data/coupons'
 
 const GET_PRODUCT = 'Product/GET_PRODUCT'
 const PUSH_BASKET = 'Product/PUSH_BASKET'
 const POP_BASKET = 'Product/POP_BASKET'
+const GET_COUPON = 'product/GET_COUPON'
 
 export const getProductAction = createAction(GET_PRODUCT)
 export const pushBasketAction = createAction(PUSH_BASKET)
 export const popBasketAction = createAction(POP_BASKET)
+export const getCouponAction = createAction(GET_COUPON)
 
 const initialState = {
   result : productItems,
-  baskets : []
+  baskets : [],
+  coupons : coupons,
 }
 
 export default handleActions({
@@ -34,6 +38,12 @@ export default handleActions({
       })
     }
   },
+  [GET_COUPON]:(state,action)=>{
+    return {
+      ...state,
+      coupons: state.coupons
+    }
+  }
 },initialState)
 
 // export const pushBasketAction2 = () => dispatch => {

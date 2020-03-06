@@ -5,7 +5,7 @@ import CartList from '../components/CartList';
 
 const CartContainer = () => {
 
-  const {result,baskets} = useSelector(state=>{ //상태 꺼네오기
+  const {result,baskets,coupons} = useSelector(state=>{ //상태 꺼네오기
     return {
       ...state.productModule
     }
@@ -21,8 +21,10 @@ const CartContainer = () => {
     <CartList
       result={result}
       baskets={baskets}
+      coupons={coupons}
       pushBasketAction={(product)=>dispatch(productModule.pushBasketAction(product))}
       popBasketAction={(product)=>dispatch(productModule.popBasketAction(product))}
+      // getCouponAction={(product)=>dispatch(productModule.getCouponAction(product))}
       />
   );
 };
