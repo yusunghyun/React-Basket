@@ -3,10 +3,23 @@ import Cart from './Cart.js';
 import Coupons from './Coupons.js'
 import { NavLink } from 'react-router-dom';
 
-const CartList = ({baskets,pushBasketAction,popBasketAction,coupons,price,plusBasketAction,minusBasketAction}) => {
+const CartList = ({baskets,pushBasketAction,popBasketAction,coupons,payment,plusBasketAction,minusBasketAction}) => {
   const [couponList,setCouponList] = React.useState([])
+  const [price,setPrice] = React.useState(0);
+  React.useEffect(()=>{
+    if(payment.length>1){
+      let a = 0
+      for(let i = 0; i < payment.length; i++){
+        a+=payment[i].price
+      }
+      setPrice(a)
+    }
+    else if(payment.length===1){
+      setPrice(payment[0].price) 
+    }
+    else setPrice(0)
+  },[payment])
   const couponClick = React.useCallback(()=>{
-    console.log(Cart)
     if(!couponList.length){
       {
         setCouponList(coupons.map((ele,idx)=>(
@@ -24,7 +37,7 @@ const CartList = ({baskets,pushBasketAction,popBasketAction,coupons,price,plusBa
         {
           baskets.map( (ele,index) =>(
             <Cart key={index} ele={ele.product} baskets={baskets} pushBasketAction={pushBasketAction} popBasketAction={popBasketAction}
-            price={price} plusBasketAction={plusBasketAction} minusBasketAction={minusBasketAction}/>
+            payment={payment} plusBasketAction={plusBasketAction} minusBasketAction={minusBasketAction}/>
           ))
         }
       </div>

@@ -20,7 +20,7 @@ const initialState = {
   result : productItems,
   baskets : [],
   coupons : coupons,
-  price: 0,
+  payment: [],
 }
 
 export default handleActions({
@@ -49,16 +49,19 @@ export default handleActions({
       coupons: state.coupons
     }
   },
-  [PLUS_BASKET]:(state,{payload:price})=>{
+  [PLUS_BASKET]:(state,{payload:pay})=>{
     return {
       ...state,
-      price: state.price + price
+      payment: state.payment.concat(pay)
     }
   },
-  [MINUS_BASKET]:(state,{payload:price})=>{
+  [MINUS_BASKET]:(state,{payload:pay})=>{
     return {
       ...state,
-      price: state.price - price
+      payment: state.payment.filter(ele=>{
+        
+        return ele.id !== pay.id
+      })
     }
   },
 

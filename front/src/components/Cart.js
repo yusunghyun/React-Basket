@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Cart = ({baskets,pushBasketAction,popBasketAction,ele,price,plusBasketAction,minusBasketAction}) => {
+const Cart = ({baskets,pushBasketAction,popBasketAction,ele,payment,plusBasketAction,minusBasketAction}) => {
   const [clickOn,setClickOn] = React.useState(false)
   const basketClick = React.useCallback(()=>{
-    if(!clickOn){
-      plusBasketAction(ele.price)
-      setClickOn(true)
+    if(Array.from(payment).some((el,idx)=>el.id === ele.id)){
+      minusBasketAction(ele)
+      setClickOn(false)
     }
     else {
-      minusBasketAction(ele.price)
-      setClickOn(false)
+      plusBasketAction(ele)
+      setClickOn(true)
     }
   },[clickOn])
   return (

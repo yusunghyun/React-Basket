@@ -5,7 +5,7 @@ import CartList from '../components/CartList';
 
 const CartContainer = () => {
 
-  const {result,baskets,coupons,price} = useSelector(state=>{ //상태 꺼네오기
+  const {result,baskets,coupons,payment} = useSelector(state=>{ //상태 꺼네오기
     return {
       ...state.productModule
     }
@@ -22,11 +22,11 @@ const CartContainer = () => {
       result={result}
       baskets={baskets}
       coupons={coupons}
-      price={price}
+      payment={payment}
       pushBasketAction={(product)=>dispatch(productModule.pushBasketAction(product))}
       popBasketAction={(product)=>dispatch(productModule.popBasketAction(product))}
-      plusBasketAction={(price)=>dispatch(productModule.plusBasketAction(price))}
-      minusBasketAction={(price)=>dispatch(productModule.minusBasketAction(price))}
+      plusBasketAction={(pay)=>dispatch(productModule.plusBasketAction(pay))}
+      minusBasketAction={(pay)=>dispatch(productModule.minusBasketAction(pay))}
       // getCouponAction={(product)=>dispatch(productModule.getCouponAction(product))}
       />
   );
