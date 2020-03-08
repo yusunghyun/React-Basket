@@ -23,6 +23,9 @@ const ProductContainer = () => {
       baskets={baskets}
       pushBasketAction={(product)=>dispatch(productModule.pushBasketAction(product))}
       popBasketAction={(product)=>dispatch(productModule.popBasketAction(product))}
+      minusBasketAction={(pay)=>{
+        return dispatch(productModule.minusBasketAction(pay))
+      }}
       />
   );
 };

@@ -7,7 +7,7 @@ const PUSH_BASKET = 'Product/PUSH_BASKET'
 const POP_BASKET = 'Product/POP_BASKET'
 const PLUS_BASKET = 'Product/PLUS_BASKET'
 const MINUS_BASKET = 'Product/MINUS_BASKET'
-const GET_COUPON = 'product/GET_COUPON'
+const GET_COUPON = 'Product/GET_COUPON'
 
 export const getProductAction = createAction(GET_PRODUCT)
 export const pushBasketAction = createAction(PUSH_BASKET)
@@ -64,6 +64,7 @@ export default handleActions({
       })
     }
   },
+  
 
 },initialState)
 
