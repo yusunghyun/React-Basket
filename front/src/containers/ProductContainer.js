@@ -19,7 +19,7 @@ const ProductContainer = () => {
 
   return (
     <ProductList
-      result={result}
+      result={result.sort((a,b)=>b.score-a.score)}
       baskets={baskets}
       pushBasketAction={(product)=>dispatch(productModule.pushBasketAction(product))}
       popBasketAction={(product)=>dispatch(productModule.popBasketAction(product))}
