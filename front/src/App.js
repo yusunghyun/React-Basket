@@ -2,20 +2,16 @@ import React from 'react';
 import {NavLink,Switch,Route} from 'react-router-dom'
 import CartContainer from './containers/CartContainer';
 import ProductContainer from './containers/ProductContainer';
+import {withRouter} from 'react-router-dom'
 
-const App = () => {
-
-  // const myStyle = {
-  //   fontWeight: 'bold',
-  //   color: '#b82514',
-  //   textDecoration: 'none'
-  // };
-
+const App = ({prop,history,location}) => {
+  React.useEffect(()=>{
+    history.push('/products')
+  },[])
+  
   return (
     <div>
       <h1>클래스101</h1>
-      <NavLink to='/cart'>장바구니!!</NavLink>
-      
       <Switch>
         <Route path='/cart' component={CartContainer}/>
         <Route path='/products' component={ProductContainer}/>
@@ -26,4 +22,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default withRouter(App);
