@@ -13,7 +13,6 @@ const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBaske
       { 
         let arr = coupons.map((ele,idx)=>(
           <button key={idx} onClick={()=>{
-            console.log(ele)
             return setDiscount(ele.discountAmount||canDiscountPrice*ele.discountRate/100)
           }}>{ele.title}</button>
         ))
@@ -46,7 +45,10 @@ const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBaske
       setCanDiscountPrice(0)
     }
   },[payment])
-  
+  const pay = React.useCallback(()=>{
+    if(!payment.length) alert('최소 1개 선택하셔야 합니다')
+    else alert('결제 준비 중...')
+  })
   return (
     <div>
       <div>
@@ -75,7 +77,7 @@ const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBaske
         <div>총 상품 금액<span>{price}원</span></div>
         <div>할인 금액<span>{discount}원</span></div>
         <div>최종가격<span>{price-discount}원</span></div>
-        <button>결제하기</button>
+        <button onClick={pay}>결제하기</button>
       </div>
     </div>
   );
