@@ -17,6 +17,7 @@ const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBaske
           }}>{ele.title}</button>
         ))
         arr.push(<button key={arr.length} onClick={()=>{
+
           return setDiscount(0)
         }}>선택 안함</button>)
         setCouponList(arr)
@@ -63,7 +64,7 @@ const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBaske
         }
       </div>
       <div>
-        <button onClick={couponClick}>쿠폰선택</button>
+        <div onClick={couponClick}>쿠폰선택</div>
         <div>
           {
             couponList
@@ -76,7 +77,7 @@ const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBaske
         <div>도서 산간지역은 추가 배송료가 적용될 수 있습니다</div>
         <div>총 상품 금액<span>{price}원</span></div>
         <div>할인 금액<span>{discount}원</span></div>
-        <div>최종가격<span>{price-discount}원</span></div>
+        <div>최종가격<span>{price-discount < 0 ? 0 : price-discount}원</span></div>
         <button onClick={pay}>결제하기</button>
       </div>
     </div>
