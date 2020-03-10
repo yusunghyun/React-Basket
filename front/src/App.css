@@ -16,3 +16,44 @@
 }
 
 .lk:hover:not(.active) {background-color: #ddd;}
+.pagination{
+  width:330px;
+  margin: auto;
+}
+
+.title{
+  border: 1px;
+  margin: 10px;
+}
+
+.title2{
+  width: 288px;
+  margin: auto;
+}
+
+.cart{
+  width: 288px;
+  margin:auto;
+}
+
+.pp{
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(62, 64, 66);
+  line-height: 28px;
+  letter-spacing: -0.3px;
+  margin: 0px;
+}
+.pp2{
+  border: 0px solid;
+  
+}
+.pp3{
+  width:288px;
+}
+
+.basicon{
+  float: right;
+  width:50px;
+  height: 50px;
+}

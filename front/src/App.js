@@ -11,7 +11,9 @@ const App = ({prop,history,location}) => {
   
   return (
     <div>
-      <h1>클래스101</h1>
+      <div>
+        <h1 className='cart'>클래스101</h1>
+      </div>
       <Switch>
         <Route path='/cart' component={CartContainer}/>
         <Route path='/products' component={ProductContainer}/>

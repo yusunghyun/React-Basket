@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 
 const Product = ({item,baskets,popBasketAction,pushBasketAction,minusBasketAction}) => {
   const [bd,setBd] = React.useState('담기')
@@ -26,12 +27,13 @@ const Product = ({item,baskets,popBasketAction,pushBasketAction,minusBasketActio
     }
   })
   return (
-    <div>
-      <div>{item.title}</div>
-      <img src={item.coverImage} height='100px' width='100px' ></img>
-      <span>{item.price}원</span>
-      <button onClick={()=>basketAction()}>{bd}</button>
-      
+    <div className='title'>
+      <div className='title2'>
+        <img src={item.coverImage} height='216px' width='288px' ></img>
+        <div>{item.title}</div>
+        <span margin='auto'>{item.price}원</span>
+        <button onClick={()=>basketAction()}>{bd}</button>
+      </div>
     </div>
   );
 };

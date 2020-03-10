@@ -1,6 +1,9 @@
 import React from 'react';
 import Cart from './Cart.js';
 import { NavLink } from 'react-router-dom';
+import '../App.css'
+import {MdUndo} from 'react-icons/md'
+
 
 const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBasketAction,}) => {
   const [couponList,setCouponList] = React.useState([])
@@ -53,32 +56,35 @@ const CartList = ({baskets,coupons,useCoupon,payment,plusBasketAction,minusBaske
   return (
     <div>
       <div>
-        <NavLink to='/products'>돌아가기</NavLink>
+        <NavLink to='/products'><MdUndo className='basicon'/></NavLink>
       </div>
-      <div>
-        {
-          baskets.map( (ele,index) =>(
-            <Cart key={index} ele={ele.product} baskets={baskets}
-            payment={payment} plusBasketAction={plusBasketAction} minusBasketAction={minusBasketAction}/>
-          ))
-        }
-      </div>
-      <div>
-        <div onClick={couponClick}>쿠폰선택</div>
+        
+      <div className='cart'>
         <div>
           {
-            couponList
+            baskets.map( (ele,index) =>(
+              <Cart key={index} ele={ele.product} baskets={baskets}
+              payment={payment} plusBasketAction={plusBasketAction} minusBasketAction={minusBasketAction}/>
+            ))
           }
         </div>
-        
-      </div>
-      <div>
-        <div>결제금액</div>
-        <div>도서 산간지역은 추가 배송료가 적용될 수 있습니다</div>
-        <div>총 상품 금액<span>{price}원</span></div>
-        <div>할인 금액<span>{discount}원</span></div>
-        <div>최종가격<span>{price-discount < 0 ? 0 : price-discount}원</span></div>
-        <button onClick={pay}>결제하기</button>
+        <div>
+          <div onClick={couponClick}>쿠폰선택</div>
+          <div>
+            {
+              couponList
+            }
+          </div>
+          
+        </div>
+        <div>
+          <div className='pp'>결제금액</div>
+          <div >도서 산간지역은 추가 배송료가 적용될 수 있습니다</div>
+          <div className='pp2'><div>총 상품 금액<span>{price}원</span></div></div>
+          <div className='pp2'><div>할인 금액<span>{discount}원</span></div></div>
+          <div className='pp2'><div>최종가격<span>{price-discount < 0 ? 0 : price-discount}원</span></div></div>
+          <button onClick={pay}  className='pp3'>결제하기</button>
+        </div>
       </div>
     </div>
   );
