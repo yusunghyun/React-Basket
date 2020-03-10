@@ -14,13 +14,12 @@ import { createStore,applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 //크롬개발자도구에 데브툴 연동(선택사항)
 import { composeWithDevTools } from 'redux-devtools-extension'
-import ReduxThunk from 'redux-thunk'
 
 //리듀서 꺼네기
 import rootReducer from './modules'
 
 //스토어를 만들겠다 리듀서를 써서 composeWithDevTools()은 선택
-const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(ReduxThunk)))
+const store = createStore(rootReducer,composeWithDevTools())
 
 
 ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root'));
